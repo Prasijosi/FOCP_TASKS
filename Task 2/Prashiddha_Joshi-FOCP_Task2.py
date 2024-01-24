@@ -9,6 +9,7 @@ def cat_visit_log(cat_records):
         # Read the content of the log file
         with open(cat_records, "r") as log_file:
             file_lines = log_file.readlines()
+
     except FileNotFoundError:
         # Handle file not found error
         sys.exit(f"Can't Open File!: {cat_records}")
@@ -22,6 +23,8 @@ def cat_visit_log(cat_records):
 
     # Process each line in the log file
     for line in file_lines:
+        if not line.strip():
+            continue
         # Exit loop when encountering 'END'
         if line.strip() == "END":
             break
@@ -29,22 +32,20 @@ def cat_visit_log(cat_records):
         try:
             # Split each line into event, entry time, and exit time
             event, entry_time, exit_time = line.strip().split(",")
-            entry_time = int(entry_time)
-            exit_time = int(exit_time)
+            entry_time, exit_time = int(entry_time),int(exit_time)
 
-            # Calculate the duration of the visit
+            # Calculate the duration of the visit in minutes
             duration = exit_time - entry_time
 
             # Update statistics based on the event
             if event == "OURS":
                 our_cat_visits += 1
+                 # Update total visit duration and track shortest and longest visits
+                total_minutes += duration
+                shortest_visit_time = min(shortest_visit_time, duration)
+                longest_visit_time = max(longest_visit_time, duration)
             else:
                 other_cats_doused += 1
-
-            # Update total visit duration and track shortest and longest visits
-            total_minutes += duration
-            shortest_visit_time = min(shortest_visit_time, duration)
-            longest_visit_time = max(longest_visit_time, duration)
 
         except ValueError:
             # Handle invalid format error
