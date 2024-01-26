@@ -1,4 +1,5 @@
 import main
+import getpass
 
 def login(username, password):
     # Check if the username exists before prompting for a password
@@ -12,7 +13,7 @@ def login(username, password):
         return True
 
 username = input("Enter username:").lower()
-password = input("Enter a password:")
+password = getpass.getpass("Enter a password:")
 
 if login(username, password):
         print("Welcome!!")
