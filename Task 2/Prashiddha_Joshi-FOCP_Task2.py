@@ -44,6 +44,8 @@ def cat_visit_log(cat_records):
                 total_minutes += duration
                 shortest_visit_time = min(shortest_visit_time, duration)
                 longest_visit_time = max(longest_visit_time, duration)
+                # Calculate average visit duration by our cat
+                average_visit_duration = total_minutes // our_cat_visits if our_cat_visits else 0
             else:
                 other_cats_doused += 1
 
@@ -55,8 +57,7 @@ def cat_visit_log(cat_records):
     hours = total_minutes // 60
     remaining_minutes = total_minutes % 60
 
-    # Calculate average visit duration by our cat
-    average_visit_duration = total_minutes / our_cat_visits if our_cat_visits else 0
+    
 
     # Print the log file analysis results
     print("*****************")
@@ -65,7 +66,7 @@ def cat_visit_log(cat_records):
     print(f"Our Cat Visits: {our_cat_visits}")
     print(f"Intruding Cats Doused With Water: {other_cats_doused}")
     print(f"Total Time in House: {hours} Hours, {remaining_minutes} Minutes")
-    print(f"Average Visit Length By Our Cat: {average_visit_duration:.1f} Minutes")
+    print(f"Average Visit Length By Our Cat: {average_visit_duration} Minutes")
     print(f"Longest Visit Length: {longest_visit_time} Minutes")
     print(f"Shortest Visit Length: {shortest_visit_time} Minutes")
 
