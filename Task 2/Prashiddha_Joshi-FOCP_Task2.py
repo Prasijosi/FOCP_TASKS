@@ -65,7 +65,7 @@ def cat_visit_log(cat_records):
     print(f"Our Cat Visits: {our_cat_visits}")
     print(f"Intruding Cats Doused With Water: {other_cats_doused}")
     print(f"Total Time in House: {hours} Hours, {remaining_minutes} Minutes")
-    print(f"Average Visit Length By Our Cat: {average_visit_duration:.2f} Minutes")
+    print(f"Average Visit Length By Our Cat: {average_visit_duration:.1f} Minutes")
     print(f"Longest Visit Length: {longest_visit_time} Minutes")
     print(f"Shortest Visit Length: {shortest_visit_time} Minutes")
 
