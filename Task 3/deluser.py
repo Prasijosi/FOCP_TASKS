@@ -1,4 +1,3 @@
-import os
 import main
 
 def delete_user(username):
